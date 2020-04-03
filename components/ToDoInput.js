@@ -15,36 +15,44 @@ const ToDoInput = ({ addToDo, isVisible, handleVisibility }) => {
 
   return (
     <Modal visible={isVisible} animationType='slide'>
-      <View style={styles.input}>
+      <View style={styles.inputContainer}>
         <TextInput
           style={styles.inputField}
           onChangeText={handleTextChange}
           value={text}
         />
-        <Button title="Add" onPress={handleAdd}/>
-        <Button title="Cancel" color="red" onPress={handleVisibility}/>
+        <View style={styles.buttons}>
+          <Button title="Add" onPress={handleAdd}/>
+          <Button title="Cancel" color="red" onPress={handleVisibility}/>
+        </View>
       </View>
     </Modal>
     )
   }
 
 const styles = StyleSheet.create({
-  inputField: {
-    height: 40,
-    width: 300,
-    fontSize: 18,
-    backgroundColor: 'white',
-    borderColor: 'gray',
-    borderWidth: 1,
-    margin: 15,
-    padding: 3,
-    },
-  input: {
+  inputContainer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '100%'
     },
+  inputField: {
+    height: 40,
+    width: '80%',
+    fontSize: 18,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 15,
+    padding: 3,
+    },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: '60%'
+    
+  }
 })
 
 export default ToDoInput

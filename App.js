@@ -18,7 +18,7 @@ export default function App() {
 
   const deleteToDo = (id) => {
     setToDos(currentToDos => {
-      return toDos.filter(todo => todo.id !== id)
+      return currentToDos.filter(todo => todo.id !== id)
     })
   }
   //setToDos(toDos.filter(todo => todo.id !== id))
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f9ebff',
     alignItems: 'center',
+    justifyContent: 'center',
     paddingTop: 30,
   },
   appTitle: {
