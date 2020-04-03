@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { View, Button, TextInput, StyleSheet } from 'react-native'
+import { View, Button, TextInput, StyleSheet, Modal } from 'react-native'
 
-const ToDoInput = ({ addToDo }) => {
+const ToDoInput = ({ addToDo, isVisible, handleVisibility }) => {
   const [text, setText] = useState('')
 
   const handleTextChange = (enteredText) => {
@@ -14,14 +14,17 @@ const ToDoInput = ({ addToDo }) => {
   }
 
   return (
-    <View style={styles.input}>
-    <TextInput
-      style={styles.inputField}
-      onChangeText={handleTextChange}
-      value={text}
-    />
-    <Button title="Add" onPress={handleAdd}/>
-    </View>
+    <Modal visible={isVisible} animationType='slide'>
+      <View style={styles.input}>
+        <TextInput
+          style={styles.inputField}
+          onChangeText={handleTextChange}
+          value={text}
+        />
+        <Button title="Add" onPress={handleAdd}/>
+        <Button title="Cancel" color="red" onPress={handleVisibility}/>
+      </View>
+    </Modal>
     )
   }
 
@@ -37,7 +40,8 @@ const styles = StyleSheet.create({
     padding: 3,
     },
   input: {
-    flexDirection: 'row',
+    flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
     },
