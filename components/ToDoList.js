@@ -2,12 +2,15 @@ import React from 'react'
 import { FlatList } from 'react-native'
 import ToDoItem from './ToDoItem'
 
-const ToDoList = ({ toDos }) => {
+const ToDoList = ({ toDos, handleDelete }) => {
+
   return (
     <FlatList data={toDos}
       keyExtractor={(item, index) => item.id}
       renderItem={itemData => (
-        <ToDoItem content={itemData.item.content} />
+        <ToDoItem
+        content={itemData.item.content}
+        deleteItem={() => handleDelete(itemData.item.id) }/>
     )}
   /> 
   )

@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Button, TextInput, StyleSheet } from 'react-native'
 
-const ToDoInput = ({ handleTextChange, text, addToDo }) => {
+const ToDoInput = ({ addToDo }) => {
+  const [text, setText] = useState('')
+
+  const handleTextChange = (enteredText) => {
+    setText(enteredText)
+  }
+
+  const handleAdd = () => {
+    addToDo(text)
+    setText('')
+  }
+
   return (
     <View style={styles.input}>
     <TextInput
@@ -9,7 +20,7 @@ const ToDoInput = ({ handleTextChange, text, addToDo }) => {
       onChangeText={handleTextChange}
       value={text}
     />
-    <Button title="Add" onPress={addToDo}/>
+    <Button title="Add" onPress={handleAdd}/>
     </View>
     )
   }
@@ -33,3 +44,8 @@ const styles = StyleSheet.create({
 })
 
 export default ToDoInput
+
+
+/* Ilman kentän tyhjennystä:
+<Button title="Add" onPress={() => addTodo(textf)}/>
+*/

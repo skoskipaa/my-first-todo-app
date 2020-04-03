@@ -1,11 +1,14 @@
 import React from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 
-const ToDoItem = ({ content }) => {
+const ToDoItem = ({ content, deleteItem }) => {
+  
   return (
+    <TouchableOpacity onPress={deleteItem}>
     <View style={styles.list}>
       <Text>{content}</Text>
     </View>
+    </TouchableOpacity>
   )
 }
 

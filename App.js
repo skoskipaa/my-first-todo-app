@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import ToDoList from './components/ToDoList'
 import ToDoInput from './components/ToDoInput'
 
 export default function App() {
   const [toDos, setToDos] = useState([])
-  const [text, setText] = useState('')
 
-  const handleTextChange = (enteredText) => {
-    setText(enteredText)
-  }
-
-  const addToDo = () => {
+  const addToDo = (newToDo) => {
     setToDos(currentState => [...currentState, 
       {
         id: Math.random().toString(),
-        content: text
+        content: newToDo
       }])
-    setText('')
   }
+
+  const deleteToDo = (id) => {
+    setToDos(currentToDos => {
+      return toDos.filter(todo => todo.id !== id)
+    })
+  }
+  //setToDos(toDos.filter(todo => todo.id !== id))
 
   return (
     <View style={styles.container}>
       <Text style={styles.appTitle}>My Awesome ToDo App</Text>
-      <ToDoInput addToDo={addToDo} handleTextChange={handleTextChange} text={text} />
-      <ToDoList toDos={toDos}/>
+      <ToDoInput addToDo={addToDo} />
+      <ToDoList toDos={toDos} handleDelete={deleteToDo}/>
     </View>
   );
 }
