@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%'
     },
   inputField: {
     height: 40,

@@ -6,7 +6,7 @@ const ToDoList = ({ toDos, handleDelete }) => {
 
   return (
     <FlatList data={toDos}
-      keyExtractor={(item, index) => item.id}
+      keyExtractor={(item) => item.id}
       renderItem={itemData => (
         <ToDoItem
         content={itemData.item.content}
